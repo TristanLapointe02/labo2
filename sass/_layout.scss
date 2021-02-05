@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+
 }
 
 body {
@@ -10,7 +10,7 @@ body {
     font-family: "Montserrat", sans-serif;
     font-size: 12px;
     background-color: rgb(205, 162, 211);
-    
+    overflow-x: hidden;
     
 }
 
@@ -68,14 +68,13 @@ p{font-size: .6rem;}
     "principal principal principal"
     "pied-page pied-page pied-page";
 
-    @include desktop
-{
-    grid-template-areas: 
-    "entete entete entete"
-    "menu menu menu"
-    "principal annonce1 annonce1"
-    "pied-page pied-page pied-page";
-}
+    @include desktop {
+        grid-template-areas: 
+        "entete entete entete"
+        "menu menu menu"
+        "principal annonce1 annonce1"
+        "pied-page pied-page pied-page";
+    }
 }
 
 .entete {
@@ -88,6 +87,41 @@ p{font-size: .6rem;}
 
 .annonce1 {
     grid-area: annonce1;
+}
+
+.principal {
+    grid-area: principal;
+}
+
+.pied-page {
+    grid-area: pied-page;
+}
+
+.entete {
+    display : flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    section {
+        display : flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgb(79, 79, 218);
+            margin-left: 3vw;
+        }
+    }
+}
+
+.annonce1 {
     background-color: #efebc5;
     color: #5e6e81;
     border-radius: 10px;
@@ -95,22 +129,26 @@ p{font-size: .6rem;}
     padding: 42px;
     margin: 20px;
     div {
-        font-size: .4em;
+        font-size: .3em;
         display: flex;
         align-items: center;
     }
 }
 
-.annonce2 {
-    grid-area: annonce2;
-}
-
 .principal {
-    grid-area: principal;
-    display: grid;
-    place-items: center;
+    justify-content: center;
 }
 
-.pied-page {
-    grid-area: pied-page;
+.principal div {
+    background-color: yellow;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
+
+.principal div h3{
+    border: 1px solid blue;
+    text-align: center;
+}
+

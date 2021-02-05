@@ -1,0 +1,71 @@
+.animation div{
+    animation: anim-entete 1s both cubic-bezier(0,.96,1,.14);
+}
+
+@keyframes anim-entete {
+    0% {
+        transform: translateX(50vw);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.principal div h3{
+    animation: anim-principal 1s both cubic-bezier(1,.03,.95,.85);
+}
+
+@keyframes anim-principal {
+    0% {
+        transform: scale(3);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.2;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/*
+.animation div:nth-of-type(1){
+    animation-delay: .5s;
+}
+
+.animation div:nth-of-type(2){
+    animation-delay: 1s;
+}
+
+.animation div:nth-of-type(3){
+    animation-delay: 1.5s;
+}
+
+.animation div:nth-of-type(4){
+    animation-delay: 2s;
+}
+
+.animation div:nth-of-type(5){
+    animation-delay: 2.5s;
+}
+*/
+
+$columns: 5;
+
+@for $i from 1 through $columns {
+    .animation div:nth-of-type(#{$i}) {
+        animation-delay: $i#{s};
+    }
+}
+
+$titles: 3;
+
+@for $i from 1 through $titles {
+    .principal div h3:nth-of-type(#{$i}) {
+        animation-delay: $i#{s};
+    }
+}
