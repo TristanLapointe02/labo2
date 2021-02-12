@@ -1,7 +1,9 @@
+/* Différentes manières d'utiliser les variables avec les couleurs */
 $couleur_desktop: #00311d;
 $couleurs : (
     primaire: $couleur_desktop,
-    text: #fff6bb,
+    fond_pale: #fff6bb,
+    secondaire: rgb(67, 67, 201),
     primaire_pale : lighten($couleur_desktop, 40%)
 );
 

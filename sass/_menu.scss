@@ -1,0 +1,55 @@
+/* burger */
+#chkburger {
+    display: none;
+}
+
+#burger {
+    background-color: couleur(secondaire);
+    border-radius: 5rem;
+    transition: 0.2s;
+    padding: .5em .3em .5em .25em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#nav img {
+    width: 10vw;
+}
+
+#chkburger:checked ~ nav a img{
+    opacity: 1;
+}
+
+/* menu */
+
+.menu {
+    display:flex;
+    nav {
+        width: 80vw;
+        display: flex;
+        align-items: center;
+        background-color:couleur(fond_pale);
+        transition: clip-path 0.5s;
+        clip-path:ellipse(50% 150% at -50% 50%);
+        flex-wrap: wrap;
+        
+        a {
+            display: block;
+            padding: .5rem;
+            
+            img {
+                border-radius: 5rem;
+                padding: .1rem;
+                opacity: 0;
+                transition: .75s all ease;
+            }
+            
+        }
+
+        a :hover {
+            background-color: rgb(158, 157, 157);
+            transition: 0.5s all ease;
+        }
+    }
+}

@@ -1,3 +1,5 @@
+/* Animation du header */
+
 .animation div{
     animation: anim-entete 1s both cubic-bezier(0,.96,1,.14);
 }
@@ -12,49 +14,7 @@
     }
 }
 
-.principal div h3{
-    animation: anim-principal 1s both cubic-bezier(1,.03,.95,.85);
-}
-
-@keyframes anim-principal {
-    0% {
-        transform: scale(3);
-        opacity: 0;
-    }
-
-    50% {
-        opacity: 0.2;
-    }
-
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-/*
-.animation div:nth-of-type(1){
-    animation-delay: .5s;
-}
-
-.animation div:nth-of-type(2){
-    animation-delay: 1s;
-}
-
-.animation div:nth-of-type(3){
-    animation-delay: 1.5s;
-}
-
-.animation div:nth-of-type(4){
-    animation-delay: 2s;
-}
-
-.animation div:nth-of-type(5){
-    animation-delay: 2.5s;
-}
-*/
-
-$columns: 5;
+$columns: 4;
 
 @for $i from 1 through $columns {
     .animation div:nth-of-type(#{$i}) {
@@ -62,10 +22,33 @@ $columns: 5;
     }
 }
 
-$titles: 3;
+/* Animations de la section principale */
 
-@for $i from 1 through $titles {
+$titres: 4;
+
+@for $i from 1 through $titres {
     .principal div h3:nth-of-type(#{$i}) {
-        animation-delay: $i#{s};
+        animation: anim-#{$i} .5s .5*$i#{s} both;
+    }
+}
+
+$tabTranslate: (
+    1: translateX(-1500px) rotate(-90deg),
+    2: translateX(1500px) rotate(90deg),
+    3: translateY(-1500px) rotate(-90deg),
+    4: translateY(-1500px) rotate(90deg),
+);
+
+@each $i, $elem in $tabTranslate {
+    @keyframes anim-#{$i}{
+        0% {
+            transform: $elem scale(3);
+            opacity: -3;
+        }
+
+        100% {
+            transform: translate(0) scale(1) rotate(0deg);
+            opacity: 1;
+        }
     }
 }

@@ -1,121 +1,103 @@
+@charset "UTF-8";
 /* --------------
 variable
 -------------- */
+/* Différentes manières d'utiliser les variables avec les couleurs */
 /* --------------
 mixins
 -------------- */
 /* --------------
-animation
+menu
 -------------- */
-.animation div {
-  animation: anim-entete 1s both cubic-bezier(0, 0.96, 1, 0.14);
+/* burger */
+#chkburger {
+  display: none;
 }
 
-@keyframes anim-entete {
-  0% {
-    transform: translateX(50vw);
-  }
-  100% {
-    transform: translateX(0);
-  }
+#burger {
+  background-color: #4343c9;
+  border-radius: 5rem;
+  transition: 0.2s;
+  padding: .5em .3em .5em .25em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.principal div h3 {
-  animation: anim-principal 1s both cubic-bezier(1, 0.03, 0.95, 0.85);
+#nav img {
+  width: 10vw;
 }
 
-@keyframes anim-principal {
-  0% {
-    transform: scale(3);
-    opacity: 0;
-  }
-  50% {
-    opacity: 0.2;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
+#chkburger:checked ~ nav a img {
+  opacity: 1;
 }
 
-/*
-.animation div:nth-of-type(1){
-    animation-delay: .5s;
+/* menu */
+.menu {
+  display: flex;
 }
 
-.animation div:nth-of-type(2){
-    animation-delay: 1s;
+.menu nav {
+  width: 80vw;
+  display: flex;
+  align-items: center;
+  background-color: #fff6bb;
+  transition: clip-path 0.5s;
+  clip-path: ellipse(50% 150% at -50% 50%);
+  flex-wrap: wrap;
 }
 
-.animation div:nth-of-type(3){
-    animation-delay: 1.5s;
+.menu nav a {
+  display: block;
+  padding: .5rem;
 }
 
-.animation div:nth-of-type(4){
-    animation-delay: 2s;
+.menu nav a img {
+  border-radius: 5rem;
+  padding: .1rem;
+  opacity: 0;
+  transition: .75s all ease;
 }
 
-.animation div:nth-of-type(5){
-    animation-delay: 2.5s;
-}
-*/
-.animation div:nth-of-type(1) {
-  animation-delay: 1s;
-}
-
-.animation div:nth-of-type(2) {
-  animation-delay: 2s;
-}
-
-.animation div:nth-of-type(3) {
-  animation-delay: 3s;
-}
-
-.animation div:nth-of-type(4) {
-  animation-delay: 4s;
-}
-
-.animation div:nth-of-type(5) {
-  animation-delay: 5s;
-}
-
-.principal div h3:nth-of-type(1) {
-  animation-delay: 1s;
-}
-
-.principal div h3:nth-of-type(2) {
-  animation-delay: 2s;
-}
-
-.principal div h3:nth-of-type(3) {
-  animation-delay: 3s;
+.menu nav a :hover {
+  background-color: #9e9d9d;
+  transition: 0.5s all ease;
 }
 
 /* --------------
 layout
 -------------- */
+/* --------------------------------------------------------
+Feuille de style pour l'exercice 1
+
+auteur: Tristan Lapointe
+version: 1.0
+modification récente : 11 février 2021
+email: tristan.lapointe02@gmail.com
+----------------------------------------------------------*/
 * {
   margin: 0;
   padding: 0;
 }
 
+/* Conteur body de la page & clip-path */
 body {
   width: 100vw;
   height: 100vh;
   font-family: "Montserrat", sans-serif;
-  font-size: 12px;
-  background-color: #8c49b3;
+  background-color: #6C019B;
   overflow-x: hidden;
+  color: #fff6bb;
 }
 
 body::after {
   content: "";
-  clip-path: polygon(0 0, 80% 0, 50% 100%, 0 100%);
+  clip-path: polygon(0 0, 90% 0, 0% 100%, 0% 100%);
   background-color: #3e3ec2;
   background-color: #00311d;
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   top: 0;
   bottom: 0;
   left: 0;
@@ -123,6 +105,7 @@ body::after {
   z-index: -1;
 }
 
+/* Définition des tailles de caractères */
 h1 {
   font-size: 4rem;
 }
@@ -151,12 +134,9 @@ p {
   font-size: .6rem;
 }
 
+/* Propriété de tous les blocs */
 .bloc {
-  border: 1px solid #666;
   background-color: transparent;
-  color: wheat;
-  font-size: 3rem;
-  margin-left: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -169,11 +149,12 @@ p {
   margin-left: 15px;
 }
 
+/* Grille globale de la page, adaptative */
 .grille {
   display: grid;
-  width: 80%;
+  width: 85%;
   margin: 0 auto;
-  grid-gap: 20px;
+  grid-gap: 1.5vw;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas: "entete entete entete" "menu menu menu" "annonce1 annonce1 annonce1" "principal principal principal" "pied-page pied-page pied-page";
 }
@@ -184,6 +165,7 @@ p {
   }
 }
 
+/* Assosiation des grid-area */
 .entete {
   grid-area: entete;
 }
@@ -204,26 +186,29 @@ p {
   grid-area: pied-page;
 }
 
+/* Entête */
 .entete {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding-top: 1.25vh;
 }
 
-.entete section {
+.entete section, .entete h1 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
-.entete section div {
+.entete section div, .entete h1 div {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50px;
+  width: 12vw;
   height: 50px;
-  border-radius: 50%;
+  border-radius: 50px;
   background-color: #4343c9;
   box-shadow: -1px -1px 20px 3px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: -1px -1px 20px 3px rgba(0, 0, 0, 0.75);
@@ -231,9 +216,10 @@ p {
   margin-left: 3vw;
 }
 
+/* Annonce */
 .annonce1 {
-  background-color: #efebc5;
-  color: #5e6e81;
+  background-color: #fff6bb;
+  color: #00311d;
   border-radius: 10px;
   box-shadow: -1px -1px 20px 3px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: -1px -1px 20px 3px rgba(0, 0, 0, 0.75);
@@ -243,17 +229,18 @@ p {
 }
 
 .annonce1 div {
-  font-size: .3em;
+  font-size: 1em;
   display: flex;
   align-items: center;
 }
 
+/* Message principal animé */
 .principal {
   justify-content: center;
 }
 
 .principal div {
-  height: 30vh;
+  height: 35vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -266,5 +253,110 @@ p {
   -webkit-box-shadow: -1px -1px 20px 3px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: -1px -1px 20px 3px rgba(0, 0, 0, 0.75);
   text-align: center;
+}
+
+/* Pied de page */
+.pied-page {
+  flex-direction: row;
+  justify-content: space-between;
+  color: #00311d;
+  border-radius: 50px;
+  padding: 1.5vw;
+  margin: 2vh 0;
+  background-color: #fff6bb;
+}
+
+/* --------------
+animation
+-------------- */
+/* Animation du header */
+.animation div {
+  animation: anim-entete 1s both cubic-bezier(0, 0.96, 1, 0.14);
+}
+
+@keyframes anim-entete {
+  0% {
+    transform: translateX(50vw);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animation div:nth-of-type(1) {
+  animation-delay: 1s;
+}
+
+.animation div:nth-of-type(2) {
+  animation-delay: 2s;
+}
+
+.animation div:nth-of-type(3) {
+  animation-delay: 3s;
+}
+
+.animation div:nth-of-type(4) {
+  animation-delay: 4s;
+}
+
+/* Animations de la section principale */
+.principal div h3:nth-of-type(1) {
+  animation: anim-1 0.5s 0.5s both;
+}
+
+.principal div h3:nth-of-type(2) {
+  animation: anim-2 0.5s 1s both;
+}
+
+.principal div h3:nth-of-type(3) {
+  animation: anim-3 0.5s 1.5s both;
+}
+
+.principal div h3:nth-of-type(4) {
+  animation: anim-4 0.5s 2s both;
+}
+
+@keyframes anim-1 {
+  0% {
+    transform: translateX(-1500px) rotate(-90deg) scale(3);
+    opacity: -3;
+  }
+  100% {
+    transform: translate(0) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes anim-2 {
+  0% {
+    transform: translateX(1500px) rotate(90deg) scale(3);
+    opacity: -3;
+  }
+  100% {
+    transform: translate(0) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes anim-3 {
+  0% {
+    transform: translateY(-1500px) rotate(-90deg) scale(3);
+    opacity: -3;
+  }
+  100% {
+    transform: translate(0) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes anim-4 {
+  0% {
+    transform: translateY(-1500px) rotate(90deg) scale(3);
+    opacity: -3;
+  }
+  100% {
+    transform: translate(0) scale(1) rotate(0deg);
+    opacity: 1;
+  }
 }
 /*# sourceMappingURL=style.css.map */

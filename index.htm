@@ -13,38 +13,92 @@
     
     <section class="grille">
         <header class="bloc entete">
-            <h1>Entête</h1>
+            <h1><img src="images/vaccin.png"></h1>
             <section class="animation">
-                <div>1</div>
-                <div>2</div>
-                <div>3</div>
-                <div>4</div>
-                <div>5</div>
+                <div>Accueil</div>
+                <div>Images</div>
+                <div>Réservation</div>
+                <div>À propos</div>
             </section>
         </header>
-        <nav class="bloc menu"><h4>Menu</h4></nav>
+        <nav class="bloc menu">
+            <section class="menu">
+                <input type="checkbox" id="chkburger">
+                <label for="chkburger" id="burger">
+                    <img src="https://s2.svgbox.net/hero-outline.svg?ic=menu-alt-1&color=fff6bb" width="132" height="32">
+                </label>
+                <nav id="nav">
+                    <a href="#"><img src="https://s2.svgbox.net/hero-outline.svg?ic=badge-check&color=4343c9"></a>
+                    <a href="#"><img src="https://s2.svgbox.net/hero-outline.svg?ic=cog&color=4343c9"></a>
+                    <a href="#"><img src="https://s2.svgbox.net/hero-outline.svg?ic=document-text&color=4343c9"></a>
+                    <a href="#"><img src="https://s2.svgbox.net/hero-outline.svg?ic=exclamation&color=4343c9"></a>
+                    <a href="#"><img src="https://s2.svgbox.net/hero-outline.svg?ic=gift&color=4343c9"></a>
+                    <a href="#"><img src="https://s2.svgbox.net/octicons.svg?ic=bug-bold&color=4343c9"></a>
+        
+                </nav>
+        
+            </section>
+        </nav>
         <sidebar class="bloc annonce1">
-            Annonce #1
+            <h2>Faites-vous vacciner !</h2>
 
             <section>
-                <div><img src="https://s2.svgbox.net/illlustrations.svg?ic=burger" width="32" height="32">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                <div><img src="https://s2.svgbox.net/illlustrations.svg?ic=desktop" width="32" height="32">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                <div><img src="https://s2.svgbox.net/illlustrations.svg?ic=coding" width="32" height="32">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                <div><img src="https://s2.svgbox.net/illlustrations.svg?ic=covid-virus" width="32" height="32">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                <div><img src="https://s2.svgbox.net/illlustrations.svg?ic=burger" width="32" height="32">Avant d'arriver pour vous faire vacciner, n'oubliez pas d'être à jeun ! Ne mangez surtout pas de malbouffe.</div>
+                <div><img src="https://s2.svgbox.net/illlustrations.svg?ic=desktop" width="32" height="32">Réservez votre rendez-vous en ligne ! Vous avez simplement besoin d'un ordinateur ou un téléphone mobile et un connexion internet.</div>
+                <div><img src="https://s2.svgbox.net/illlustrations.svg?ic=coding" width="32" height="32">Facile d'accès, intuitif, faites juste suivre les étapes présentées à votre écran. Appuyez sur réserver pour commencer !</div>
+                <div><img src="https://s2.svgbox.net/illlustrations.svg?ic=covid-virus" width="32" height="32">Ensemble, nous allons combattre ce virus ! Il peut paraître redoutable, mais sa fin peut arriver bientôt si nous continuons nos efforts. Faites-vous vacciner !</div>
             </section>
         </sidebar>
 
         <main class="bloc principal">
             <div>
-                <h3>Conception d'interfaces et</h3>
-                <h3>développement Web</h3>
-                <h3>Exercice #1</h3>
+                <h3>Venez</h3>
+                <h3>vous faire</h3>
+                <h3>vacciner</h3>
+                <h3>dès maintenant !</h3>
             </div>
         </main>
 
         <footer class="bloc pied-page">
-            Pied de page
+            <h4>&copy; Tristan Lapointe, TIM</h4>
+            <h4>Conception d'interfaces et développement Web</h4>
         </footer>
     </section>  
 </body>
+
+<script>
+
+    /* En équipe avec Yannick Langlois */
+    let navOuvert = false;
+    let menuOuvert = false;
+    let nav = document.getElementById('nav');
+    let burger = document.getElementById('burger');
+    
+    burger.addEventListener('mousedown', function(){
+        if (menuOuvert == false){
+            burger.style.borderRadius = "5rem 0 0 5rem";
+            menuOuvert = true;
+        }
+        else {
+            menuOuvert = false;
+            navOuvert = false;
+            nav.style.clipPath = "ellipse(50% 140% at -50% 50%)";
+        }
+    });
+
+    burger.addEventListener('transitionend', function(){
+    console.log('Animation ended');
+    if (menuOuvert == true){
+       nav.style.clipPath = "ellipse(50% 140% at 46.75% 50%)";
+       navOuvert = true;
+        }
+    });
+
+    nav.addEventListener('transitionend', function(){
+    console.log('Animation ended');
+    if (navOuvert == false){
+       burger.style.borderRadius = "5rem";
+        }
+    });
+</script>
 </html>
